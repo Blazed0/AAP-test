@@ -1,7 +1,4 @@
-- name: Test become
-  hosts: localhost
-  vars:
-    ansible_remote_tmp: /tmp/.ansible-${USER}
+- hosts: localhost
+  gather_facts: false
   tasks:
-    - name: Who am I
-      command: whoami
+    - command: whoami
