@@ -2,6 +2,8 @@
 - name: Who am I
   hosts: localhost
   gather_facts: false
+  vars: 
+    ansible_remote_tmp: /tmp/.ansible-${USER}
   tasks:
     - name: Show user
       command: whoami
