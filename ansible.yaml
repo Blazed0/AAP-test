@@ -1,6 +1,5 @@
 - name: Test become
   hosts: localhost
-  become: true
   vars:
     ansible_remote_tmp: /tmp/.ansible-${USER}
   tasks:
