@@ -1,4 +1,6 @@
-- hosts: localhost
+- name: Test sudo limited
+  hosts: localhost
   gather_facts: false
+  become: true
   tasks:
-    - command: whoami
+    - command: /usr/bin/systemctl is-active sshd
