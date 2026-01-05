@@ -1,7 +1,8 @@
---- 
-- name: Test sudo limited
-  hosts: localhost
+- hosts: localhost
   connection: local
   become: true
+  vars:
+    ansible_become_exe: sudo
+    ansible_remote_tmp: /tmp
   tasks:
     - command: whoami
