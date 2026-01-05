@@ -1,21 +1,9 @@
----
-- name: Who am I
-  become: true
-  host: t
-  vars: 
-    ansible_python_interpreter: /usr/libexec/platform-python
+- name: Test sudo limited
+  hosts: localhost
   gather_facts: false
+  connection: ssh
+  become: true
+  become_user: root
   tasks:
-    - name: Update all security-related packages
-      ansible.builtin.package:
-        name: '*'
-        state: latest
-        security: true
-
-    - name: Create a new user
-      ansible.builtin.package:
-        name: 'test'
-        state: present
-        create_home: true
-    - name: Show user
-      command: whoami
+    - command: /usr/bin/systemctl is-active sshd
+    - command: whoami
