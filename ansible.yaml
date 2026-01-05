@@ -1,6 +1,21 @@
+---
+- name: Who am I
+  hosts: localhost
   become: true
-  vars:
-    ansible_become_exe: sudo
-    ansible_remote_tmp: /tmp
+  vars: 
+    ansible_python_interpreter: /usr/libexec/platform-python
+  gather_facts: false
   tasks:
-    - command: whoami
+    - name: Update all security-related packages
+      ansible.builtin.package:
+        name: '*'
+        state: latest
+        security: true
+
+    - name: Create a new user
+      ansible.builtin.package:
+        name: 'test'
+        state: present
+        create_home: true
+    - name: Show user
+      command: whoami
