@@ -1,18 +1,7 @@
 --- 
-- name: Basic System Setup
+- name: Test sudo limited
   hosts: localhost
+  connection: local
   become: true
-  vars: 
-    ansible_python_interpreter: /usr/libexec/platform-python
   tasks:
-    - name: Update all security-related packages
-      ansible.builtin.package:
-        name: '*'
-        state: latest
-        security: true
-
-    - name: Create a new user
-      ansible.builtin.package:
-        name: 'test'
-        state: present
-        create_home: true
+    - command: whoami
