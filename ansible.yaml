@@ -1,6 +1,7 @@
 ---
 - name: Who am I
   become: true
+  host: t
   vars: 
     ansible_python_interpreter: /usr/libexec/platform-python
   gather_facts: false
